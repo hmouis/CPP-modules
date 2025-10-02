@@ -6,7 +6,7 @@
 /*   By: hmouis <hmouis@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/29 12:03:42 by hmouis            #+#    #+#             */
-/*   Updated: 2025/09/29 14:48:30 by hmouis           ###   ########.fr       */
+/*   Updated: 2025/09/30 09:48:05 by hmouis           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,8 +41,7 @@ void Account::displayAccountsInfos()
 void Account::displayStatus( void ) const
 {
     std::cout << "index:" << _accountIndex << ";amount:" << _amount;
-    std::cout << ";deposits:" << _nbDeposits << ";withdrawals:" << _nbWithdrawals;
-    std::cout << "\n";
+    std::cout << ";deposits:" << _nbDeposits << ";withdrawals:" << _nbWithdrawals << "\n";
 }
 
 void	Account::makeDeposit( int deposit )
@@ -52,8 +51,8 @@ void	Account::makeDeposit( int deposit )
     std::cout << "index:" << _accountIndex << ";p_amount:" << _amount;
     _amount += deposit;
     _totalAmount += deposit;
-    std::cout << ";deposit:" << deposit << ";amount:" << _amount << ";nb_deposits:" << _nbDeposits;
-    std::cout << "\n";
+    std::cout << ";deposit:" << deposit << ";amount:" << _amount ;
+    std::cout << ";nb_deposits:" << _nbDeposits << "\n";
 }
 
 bool	Account::makeWithdrawal( int withdrawal )

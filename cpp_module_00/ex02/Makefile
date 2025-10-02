@@ -1,13 +1,14 @@
 Name= Account
 
+CC= c++
+FLAGS= -Wall -Wextra -Werror
 src= Account.cpp tests.cpp
-
 obj= $(src:.cpp=.o)
 
 all: $(Name)
 
 $(Name): $(obj)
-	c++ -o $@ $?
+	$(CC) $(FLAGS) -o $@ $?
 
 clean:
 	rm -f $(obj)
