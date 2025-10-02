@@ -1,13 +1,14 @@
 Name= Phonebook
 
-src= main.cpp
-
+CC= c++
+FLAGS= -Wall -Wextra -Werror
+src= main.cpp PhoneBook.cpp Contact.cpp
 obj= $(src:.cpp=.o)
 
 all: $(Name)
 
 $(Name): $(obj)
-	c++ -o $@ $?
+	$(CC) $(FLAGS) -o $@ $?
 
 clean:
 	rm -f $(obj)
