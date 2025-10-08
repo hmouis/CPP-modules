@@ -6,7 +6,7 @@
 /*   By: hmouis <hmouis@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/01 11:39:20 by hmouis            #+#    #+#             */
-/*   Updated: 2025/10/02 11:37:13 by hmouis           ###   ########.fr       */
+/*   Updated: 2025/10/05 15:02:21 by hmouis           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,4 +29,9 @@ void Zombie::announce( void )
 Zombie::~Zombie()
 {
     std::cout << "the zombie: " << getName() << " has been destroyed.\n";
+}
+
+std::string Zombie::getName()
+{
+    return (name);
 }
