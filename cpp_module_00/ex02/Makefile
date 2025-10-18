@@ -1,6 +1,6 @@
 Name= Account
 
-CC= c++
+CC= g++ -std=c++98
 FLAGS= -Wall -Wextra -Werror
 src= Account.cpp tests.cpp
 obj= $(src:.cpp=.o)

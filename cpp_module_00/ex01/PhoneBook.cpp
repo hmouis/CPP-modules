@@ -6,94 +6,105 @@
 /*   By: hmouis <hmouis@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/02 11:45:44 by hmouis            #+#    #+#             */
-/*   Updated: 2025/10/02 14:13:02 by hmouis           ###   ########.fr       */
+/*   Updated: 2025/10/18 14:53:35 by hmouis           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Contact.hpp"
 #include "PhoneBook.hpp"
 
-int PhoneNumber(std::string phone)
+PhoneBook::PhoneBook()
 {
-    for (int i = 0; phone[i]; i++)
-    {
-        if (!isdigit(phone[i]))
-            return (0);
-    }
-    return (1);
-}
-int ft_atoi(std::string str)
-{
-    int result = -1;
-
-    if (str == "0")
-        return (-1);
-    for (int i = 0; str[i]; i++)
-    {
-        if (str[i] == '9' || !isdigit(str[i]) || i > 0)
-            return (-1);
-        result = str[i] - '0';
-    }
-    return (result);
+    for (int i = 0; i < 8; i++)
+        contact[i].Init();
 }
 
-int parse_search(Contact info)
+void Add(Contact &contact)
 {
-    int index;
-    std::string i;
-    
-    do{
-        std::cout << "Please enter an index between 1 and 8: ";
-        getline (std::cin, i);
-        index = ft_atoi(i);
-        if (index == -1)
-            std::cout << "Please enter a valide index\n";
-    }while (index == -1 || i.empty());
-    return (index);
+    contact.setFirstName();
+    contact.setLastName();
+    contact.setNickname();
+    contact.setPhoneNumber();
+    contact.setSecret();
+    contact.setInfo(true);
 }
 
-void print_str(std::string str)
+void DisplayContacts(PhoneBook PhoneBook)
 {
-    int i;
-    
-    for (i = 0; str[i]; i++)
+    for (int i = 0; i < 8; i++)
     {
-        if (i == 9)
-        {
-            std::cout << ".";
-            return ;
+        if (PhoneBook.contact[i].getInfo() == false)
+            break;
+        if (i == 0){
+            std::cout << std::left << "|" << std::setw(10) << "Index";
+            std::cout << "|" << std::setw(10) << "FirstName";
+            std::cout << "|" <<  std::setw(10) << "LastName" << "|" << std::setw(10) << "NickName" << "|\n";
         }
-        std::cout << str[i];
+        std::cout << "|" << std::setw(10);
+        std::cout << i;
+        std::cout << "|";
+        if (PhoneBook.contact[i].getFirstName().length() <= 10)
+            std::cout << std::setw(10);
+        if (PhoneBook.contact[i].getFirstName().length() > 10)
+            std::cout << PhoneBook.contact[i].getFirstName().substr(0, 9) << ".";
+        else
+            std::cout << PhoneBook.contact[i].getFirstName();
+        std::cout << "|";
+        if (PhoneBook.contact[i].getLastName().length() <= 10)
+            std::cout << std::setw(10);
+        if (PhoneBook.contact[i].getLastName().length() > 10)
+            std::cout << PhoneBook.contact[i].getLastName().substr(0, 9) << ".";
+        else
+            std::cout << PhoneBook.contact[i].getLastName();
+        std::cout << "|";
+        if (PhoneBook.contact[i].getNickname().length() <= 10)
+            std::cout << std::setw(10);
+        if (PhoneBook.contact[i].getNickname().length() > 10)
+            std::cout << PhoneBook.contact[i].getNickname().substr(0, 9) << ".|\n";
+        else
+            std::cout << PhoneBook.contact[i].getNickname() << "|\n"; 
     }
-    while (++i < 10)
-        std::cout << ' ';
 }
 
-void parse_add(Contact &contact)
+void DisplaySpecificContact(PhoneBook PhoneBook, int i)
 {
-    contact.setFirstName(contact);
-    contact.setLastName(contact);
-    contact.setNickname(contact);
-    contact.setPhoneNumber(contact);
-    contact.setSecret(contact);
-}
-
-void display_contact(int index, Contact contact)
-{
-    if (contact.getFirstName(contact) == "")
-    {
+    if (PhoneBook.contact[i].getInfo() == false){
         std::cout << "There is no info for this contact\n";
         return ;
     }
-    std::cout << "---------------------------------------------\n";
-    std::cout << "| Index | First Name| Last Name |  NickName |\n";
-    std::cout << "---------------------------------------------\n";
-    std::cout << "|   " << index << "   | ";
-    print_str(contact.getFirstName(contact));
-    std::cout << " | ";
-    print_str(contact.getLastName(contact));
-    std::cout << " | ";
-    print_str(contact.getNickname(contact));
-    std::cout << " |";
-    std::cout << "\n---------------------------------------------\n";
+    std::cout << std::setw(15) << "First Name" << ": " << PhoneBook.contact[i].getFirstName() << "\n";
+    std::cout << std::setw(15) << "Last Name" << ": " << PhoneBook.contact[i].getLastName() << "\n";
+    std::cout << std::setw(15) << "NickName" << ": " << PhoneBook.contact[i].getNickname() << "\n";
+    std::cout << std::setw(15) << "Phone Number" << ": " << PhoneBook.contact[i].getPhoneNumber() << "\n";
+    std::cout << std::setw(15) << "Darkest Secret" << ": " << PhoneBook.contact[i].getSecret() << "\n";
+}
+
+void Search(PhoneBook PhoneBook)
+{
+    std::string n;
+    int i;
+    int index;
+    DisplayContacts(PhoneBook);   
+    while (1)
+    {
+        std::cout << "Entre a number between 0 and 7\n";
+        std::getline(std::cin, n);
+        if (n.empty())
+            continue;
+        for (i = 0; isdigit(n[i]); i++) ;
+        if (n[i]){
+            std::cout << "Only digits\n";
+            continue;
+        }
+        if (n.length() > 1){
+            std::cout << "Index is out of range\n";
+            return ;
+        }
+        index = std::stoi(n);
+        if (index > 7)
+            std::cout << "Index is out of range\n";
+        else
+            break;
+    }
+    DisplaySpecificContact(PhoneBook, index);
 }

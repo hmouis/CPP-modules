@@ -6,106 +6,167 @@
 /*   By: hmouis <hmouis@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/02 11:45:29 by hmouis            #+#    #+#             */
-/*   Updated: 2025/10/02 14:02:53 by hmouis           ###   ########.fr       */
+/*   Updated: 2025/10/18 14:41:51 by hmouis           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Contact.hpp"
 #include "PhoneBook.hpp"
 
-Contact::Contact()
+void    Contact::setFirstName()
 {
-    first_name = "";
-    last_name = "";
-    darkest_secret = "";
-    phone_number = "";
-    nickname = "";
-}
-
-void    Contact::setFirstName(Contact &contact)
-{
+    int i = 0;
     std::string str;
     
-    do{
+    while (1)
+    {
         std::cout << "First Name: ";
         getline (std::cin, str);
-        if (str.empty())
+        if (str.empty()){
             std::cout << "Please enter the first name\n";
-    }while (str.empty());
-    contact.first_name = str;
+            continue;
+        }
+        for (i = 0; isprint(str[i]); i++) ;
+        if (str[i]){
+            std::cout << "This string is not printible\n";
+            continue;
+        }
+        else
+            break;
+    }
+    first_name = str;
+    
 }
-void    Contact::setLastName(Contact &contact)
+void    Contact::setLastName()
 {
     std::string str;
+    int i = 0;
     
-    do{
+    while (1)
+    {
         std::cout << "Last Name: ";
         getline (std::cin, str);
-        if (str.empty())
+        if (str.empty()){
             std::cout << "Please enter the Last name\n";
-    }while (str.empty());
-    contact.last_name = str;
+            continue;
+        }
+        for (i = 0; isprint(str[i]); i++) ;
+        if (str[i]){
+            std::cout << "This string is not printible\n";
+            continue;
+        }  
+        else
+            break;
+    }
+    last_name = str;
 }
-void    Contact::setNickname(Contact &contact)
+void    Contact::setNickname()
 {
+    int i = 0;
     std::string str;
     
-    do{
+    while(1)
+    {
         std::cout << "NickName: ";
         getline (std::cin, str);
-        if (str.empty())
+        if (str.empty()){
             std::cout << "Please enter the NakeName\n";
-    }while (str.empty());
-    contact.nickname = str;
+            continue;
+        }
+        for (i = 0; isprint(str[i]); i++) ;
+        if (str[i]){
+            std::cout << "This string is not printible\n";
+            continue;
+        }
+        else
+            break;
+    }
+    nickname = str;
 }
-void    Contact::setSecret(Contact &contact)
+void    Contact::setSecret()
 {
     std::string str;
+    int i = 0;
     
-    do{
+    while (1)
+    {
         std::cout << "Darkest Secret: ";
         getline (std::cin, str);
-        if (str.empty())
+        if (str.empty()){
             std::cout << "Please enter the Darkest Secret\n";
-    }while (str.empty());
-    contact.darkest_secret = str;
+            continue;
+        }
+        for (i = 0; isprint(str[i]); i++) ;
+        if (str[i]){
+            std::cout << "This string is not printible\n";
+            continue;
+        }
+        else
+            break;
+    }
+    darkest_secret = str;
 }
 
-void    Contact::setPhoneNumber(Contact &contact)
+
+void    Contact::setPhoneNumber()
 {
     std::string str;
+    int i = 0;
     
     do{
         std::cout << "Phone Number: ";
         getline (std::cin, str);
         if (str.empty())
             std::cout << "Please enter the phone Number\n";
-        else if (!PhoneNumber(str))
+        else
         {
+            for (i = 0; isdigit(str[i]); i++) ;
+            if (!str[i])
+                break;
             std::cout << "Please enter only digits\n";
             str = "";
         }
     }while (str.empty());
-    contact.phone_number = str;
+    phone_number = str;
 }
 
-std::string Contact::getFirstName(Contact contact)
+void Contact::setInfo(bool info)
 {
-    return (contact.first_name);
+    this->info = info;
 }
-std::string Contact::getLastName(Contact contact)
+
+bool Contact::getInfo()
 {
-    return (contact.last_name);
+    return (info);
 }
-std::string Contact::getNickname(Contact contact)
+
+std::string Contact::getFirstName()
 {
-    return (contact.nickname);
+    return (first_name);
 }
-std::string Contact::getSecret(Contact contact)
+std::string Contact::getLastName()
 {
-    return (contact.darkest_secret);
+    return (last_name);
 }
-std::string Contact::getPhoneNumber(Contact contact)
+std::string Contact::getNickname()
 {
-    return (contact.phone_number);
+    return (nickname);
+}
+std::string Contact::getSecret()
+{
+    return (darkest_secret);
+}
+std::string Contact::getPhoneNumber()
+{
+    return (phone_number);
+}
+
+void Contact::Init()
+{
+    first_name = "";
+    last_name = "";
+    nickname = "";
+    darkest_secret = "";
+    phone_number = "";
+    info = false;
 }

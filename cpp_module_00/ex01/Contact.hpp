@@ -6,7 +6,7 @@
 /*   By: hmouis <hmouis@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/30 12:06:23 by hmouis            #+#    #+#             */
-/*   Updated: 2025/10/02 13:59:23 by hmouis           ###   ########.fr       */
+/*   Updated: 2025/10/18 14:16:11 by hmouis           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,21 +25,26 @@ private:
     std::string nickname;
     std::string darkest_secret;
     std::string phone_number;
+    bool info;
 
-public:
-    Contact ();
+public:    
+    void setFirstName();
+    void setLastName();
+    void setNickname();
+    void setSecret();
+    void setPhoneNumber();
+    void setInfo(bool info);
+    void Init();
     
-    void setFirstName(Contact &contact);
-    void setLastName(Contact &contact);
-    void setNickname(Contact &contact);
-    void setSecret(Contact &contact);
-    void setPhoneNumber(Contact &contact);
-    
-    std::string getFirstName(Contact contact);
-    std::string getLastName(Contact contact);
-    std::string getNickname(Contact contact);
-    std::string getSecret(Contact contact);
-    std::string getPhoneNumber(Contact contact);
+    std::string getFirstName();
+    std::string getLastName();
+    std::string getNickname();
+    std::string getSecret();
+    std::string getPhoneNumber();
+    bool getInfo();
+
+    void Add(Contact &contact);
+
 };
 
 #endif

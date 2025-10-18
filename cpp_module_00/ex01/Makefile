@@ -1,6 +1,6 @@
 Name= Phonebook
 
-CC= c++
+CC= g++ -std=c++98
 FLAGS= -Wall -Wextra -Werror
 src= main.cpp PhoneBook.cpp Contact.cpp
 obj= $(src:.cpp=.o)

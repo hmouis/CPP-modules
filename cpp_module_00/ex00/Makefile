@@ -2,7 +2,7 @@ Name= megaphone
 
 src= megaphone.cpp
 
-CC= c++
+CC= g++ -std=c++98
 FLAGS= -Wall -Wextra -Werror
 
 obj= $(src:.cpp=.o)
