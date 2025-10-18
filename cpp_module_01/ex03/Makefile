@@ -1,6 +1,6 @@
 Name= war
 
-CC= c++
+CC= g++ -std=c++98
 FLAGS= -Wall -Wextra -Werror 
 
 src= main.cpp Weapon.cpp HumanA.cpp HumanB.cpp

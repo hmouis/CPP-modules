@@ -1,6 +1,6 @@
 Name= Sed
 
-CC= c++
+CC= g++ -std=c++98
 FLAGS= -Wall -Wextra -Werror 
 
 src=  main.cpp Sed.cpp
