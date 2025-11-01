@@ -36,7 +36,7 @@ void DisplayContacts(PhoneBook PhoneBook)
         if (PhoneBook.contact[i].getInfo() == false)
             break;
         if (i == 0){
-            std::cout << std::left << "|" << std::setw(10) << "Index";
+            std::cout << std::right << "|" << std::setw(10) << "Index";
             std::cout << "|" << std::setw(10) << "FirstName";
             std::cout << "|" <<  std::setw(10) << "LastName" << "|" << std::setw(10) << "NickName" << "|\n";
         }
@@ -72,7 +72,7 @@ void DisplaySpecificContact(PhoneBook PhoneBook, int i)
         std::cout << "There is no info for this contact\n";
         return ;
     }
-    std::cout << std::setw(15) << "First Name" << ": " << PhoneBook.contact[i].getFirstName() << "\n";
+    std::cout << std::left << std::setw(15) << "First Name" << ": " << PhoneBook.contact[i].getFirstName() << "\n";
     std::cout << std::setw(15) << "Last Name" << ": " << PhoneBook.contact[i].getLastName() << "\n";
     std::cout << std::setw(15) << "NickName" << ": " << PhoneBook.contact[i].getNickname() << "\n";
     std::cout << std::setw(15) << "Phone Number" << ": " << PhoneBook.contact[i].getPhoneNumber() << "\n";
@@ -82,8 +82,8 @@ void DisplaySpecificContact(PhoneBook PhoneBook, int i)
 void Search(PhoneBook PhoneBook)
 {
     std::string n;
-    int i;
-    int index;
+    int i = 0;
+    int index = 0;
     DisplayContacts(PhoneBook);   
     while (1)
     {
@@ -91,20 +91,23 @@ void Search(PhoneBook PhoneBook)
         std::getline(std::cin, n);
         if (n.empty())
             continue;
-        for (i = 0; isdigit(n[i]); i++) ;
-        if (n[i]){
+        i = 0;
+        while (n[i] && isdigit(n[i]))
+        {
+            index = index * 10 + (n[i] - '0');
+            if (index > 7)
+            {
+                std::cout << "Number is out of range\n";
+                return ;
+            }
+            i++;
+        }
+        if (n[i])
+        {
             std::cout << "Only digits\n";
-            continue;
+                return ;
         }
-        if (n.length() > 1){
-            std::cout << "Index is out of range\n";
-            return ;
-        }
-        index = std::stoi(n);
-        if (index > 7)
-            std::cout << "Index is out of range\n";
-        else
-            break;
+        break;
     }
     DisplaySpecificContact(PhoneBook, index);
 }

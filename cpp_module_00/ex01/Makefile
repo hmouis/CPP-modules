@@ -1,19 +1,15 @@
-Name= Phonebook
+Name= PhoneBook
 
-CC= g++ -std=c++98
-FLAGS= -Wall -Wextra -Werror
+CC= c++
+CFLAGS= -Wall -Wextra -Werror -std=c++98
 src= main.cpp PhoneBook.cpp Contact.cpp
-obj= $(src:.cpp=.o)
 
 all: $(Name)
 
-$(Name): $(obj)
-	$(CC) $(FLAGS) -o $@ $?
+$(Name): $(src)
+	$(CC) $(CFLAGS) -o $@ $?
 
-clean:
-	rm -f $(obj)
-
-fclean: clean
+fclean:
 	rm -f $(Name)
 
 re: fclean all

@@ -17,7 +17,6 @@ int main()
 {
     PhoneBook phone;
     std::string input;
-    int index;
     
     for (int i = 0; i < 8; i++)
     {
