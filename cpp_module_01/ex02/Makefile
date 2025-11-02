@@ -1,4 +1,4 @@
-Name= brain
+Name= Brain
 
 CC= g++ -std=c++98
 FLAGS= -Wall -Wextra -Werror 
