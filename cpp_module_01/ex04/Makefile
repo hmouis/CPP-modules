@@ -2,20 +2,14 @@ Name= Sed
 
 CC= g++ -std=c++98
 FLAGS= -Wall -Wextra -Werror 
-
 src=  main.cpp Sed.cpp
  
-obj= $(src:.cpp=.o)
-
 all: $(Name)
 
-$(Name): $(obj)
+$(Name): $(src)
 	$(CC) $(FLAGS) -o $@ $?
 
-clean:
-	rm -f $(obj)
-
-fclean: clean
+fclean: 
 	rm -f $(Name)
 
 re: fclean all
