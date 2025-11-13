@@ -6,7 +6,7 @@
 /*   By: hmouis <hmouis@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/02 11:45:44 by hmouis            #+#    #+#             */
-/*   Updated: 2025/10/18 14:53:35 by hmouis           ###   ########.fr       */
+/*   Updated: 2025/11/13 00:32:38 by hmouis           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,17 +66,30 @@ void DisplayContacts(PhoneBook PhoneBook)
     }
 }
 
+void PrintStr(std::string str)
+{
+    if (str.length() > 10)
+        std::cout << str.substr(0, 9) << ".\n";
+    else  
+        std::cout << str << "\n";
+}
+
 void DisplaySpecificContact(PhoneBook PhoneBook, int i)
 {
     if (PhoneBook.contact[i].getInfo() == false){
         std::cout << "There is no info for this contact\n";
         return ;
     }
-    std::cout << std::left << std::setw(15) << "First Name" << ": " << PhoneBook.contact[i].getFirstName() << "\n";
-    std::cout << std::setw(15) << "Last Name" << ": " << PhoneBook.contact[i].getLastName() << "\n";
-    std::cout << std::setw(15) << "NickName" << ": " << PhoneBook.contact[i].getNickname() << "\n";
-    std::cout << std::setw(15) << "Phone Number" << ": " << PhoneBook.contact[i].getPhoneNumber() << "\n";
-    std::cout << std::setw(15) << "Darkest Secret" << ": " << PhoneBook.contact[i].getSecret() << "\n";
+    std::cout << std::left << std::setw(15) << "First Name" << ": ";
+    PrintStr(PhoneBook.contact[i].getFirstName());
+    std::cout << std::setw(15) << "Last Name" << ": ";
+    PrintStr(PhoneBook.contact[i].getLastName());
+    std::cout << std::setw(15) << "NickName" << ": ";
+    PrintStr(PhoneBook.contact[i].getNickname());
+    std::cout << std::setw(15) << "Phone Number" << ": ";
+    PrintStr(PhoneBook.contact[i].getPhoneNumber());
+    std::cout << std::setw(15) << "Darkest Secret" << ": ";
+    PrintStr(PhoneBook.contact[i].getSecret());
 }
 
 void Search(PhoneBook PhoneBook)
