@@ -6,7 +6,7 @@
 /*   By: hmouis <hmouis@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/08 16:51:09 by hmouis            #+#    #+#             */
-/*   Updated: 2025/11/13 22:06:31 by hmouis           ###   ########.fr       */
+/*   Updated: 2025/11/14 18:20:15 by hmouis           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,6 @@ int main( void ) {
 
     std::cout << b << std::endl;
     
-    // std::cout << Fixed::max( a, b ) << std::endl;
+    std::cout << Fixed::max( a, b ) << std::endl;
     return 0;
 }

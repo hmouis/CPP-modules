@@ -6,7 +6,7 @@
 /*   By: hmouis <hmouis@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/07 16:21:58 by hmouis            #+#    #+#             */
-/*   Updated: 2025/11/13 22:12:32 by hmouis           ###   ########.fr       */
+/*   Updated: 2025/11/14 19:06:12 by hmouis           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,37 +16,32 @@ const int  Fixed::NbrOfFractional = 8;
 
 Fixed::Fixed() { 
     FixedPointNumber = 0;
-    // std::cout << "Default constructor called" << std::endl; 
 }
 
 Fixed::Fixed(const Fixed& obj)
 {
     FixedPointNumber = obj.FixedPointNumber;
-    // std::cout << "copy constructor called" << std::endl;
 }
 
 Fixed& Fixed::operator=(const Fixed& other)
 {
     this->FixedPointNumber = other.FixedPointNumber;
-    // std::cout << "Copy assignment operator called\n";
     return *this;
 }
 
 Fixed::Fixed(const float Num)
 {
-    // std::cout << "Float constructor called\n";
     FixedPointNumber = roundf(Num * 256);
 }
 
 Fixed::Fixed(const int Num)
 {
-    // std::cout << "Int constructor called\n";
     FixedPointNumber = Num << NbrOfFractional;
 }
 
 float Fixed::toFloat( void ) const
 {
-    return ((float)FixedPointNumber / 256);
+    return ((float)FixedPointNumber / (1 << NbrOfFractional));
 }
 
 int Fixed::toInt( void ) const
@@ -60,53 +55,49 @@ std::ostream& operator<<(std::ostream& os, const Fixed& obj)
     return (os);
 }
 
-Fixed& Fixed::operator+(const Fixed& other)
+Fixed Fixed::operator+(const Fixed& other)
 {
-    this->FixedPointNumber + other.FixedPointNumber;
-    return *this;
+    return this->toFloat() + other.toFloat();
 }
-Fixed& Fixed::operator-(const Fixed& other)
+Fixed Fixed::operator-(const Fixed& other)
 {
-    this->FixedPointNumber - other.FixedPointNumber;
-    return *this;
+    return this->toFloat() - other.toFloat();
 }
-Fixed& Fixed::operator*(const Fixed& other)
+Fixed Fixed::operator*(const Fixed& other)
 {
-    this->FixedPointNumber * other.FixedPointNumber;
-    return *this;
+    return this->toFloat() * other.toFloat();
 }
-Fixed& Fixed::operator/(const Fixed& other)
+Fixed Fixed::operator/(const Fixed& other)
 {
-    this->FixedPointNumber / other.FixedPointNumber;
-    return *this;
+    return this->toFloat() / other.toFloat();
 }
 bool Fixed::operator>(const Fixed& other)
 {
-    if (this->FixedPointNumber > other.FixedPointNumber)
+    if (this->toFloat() > other.toFloat())
         return true;
     return false;
 }
 bool Fixed::operator<(const Fixed& other)
 {
-    if (this->FixedPointNumber < other.FixedPointNumber)
+    if (this->toFloat() < other.toFloat())
         return true;
     return false;
 }
 bool Fixed::operator>=(const Fixed& other)
 {
-    if (this->FixedPointNumber >= other.FixedPointNumber)
+    if (this->toFloat() >= other.toFloat())
         return true;
     return false;
 }
 bool Fixed::operator<=(const Fixed& other)
 {
-    if (this->FixedPointNumber <= other.FixedPointNumber)
+    if (this->toFloat() <= other.toFloat())
         return true;
     return false;
 }
 bool Fixed::operator==(const Fixed& other)
 {
-    if (this->FixedPointNumber == other.FixedPointNumber)
+    if (this->toFloat() == other.toFloat())
         return true;
     return false;
 }
@@ -116,24 +107,24 @@ bool Fixed::operator!=(const Fixed& other)
         return true;
     return false;
 }
-Fixed& Fixed::operator++(int)
+Fixed Fixed::operator++(int)
 {
     Fixed remainder = *this;
     this->FixedPointNumber++;
     return (remainder);
 }
-Fixed& Fixed::operator--(int)
+Fixed Fixed::operator--(int)
 {
     Fixed remainder = *this;
     this->FixedPointNumber--;
     return (remainder);
 }
-Fixed& Fixed::operator++(void)
+Fixed Fixed::operator++(void)
 {
     this->FixedPointNumber++;
     return (*this);
 }
-Fixed& Fixed::operator--(void)
+Fixed Fixed::operator--(void)
 {
     this->FixedPointNumber--;
     return (*this);
@@ -173,5 +164,3 @@ void Fixed::setRawBits( int const raw )
 { 
     FixedPointNumber = raw; 
 }
-
-// Fixed::~Fixed() { std::cout << "Destructor called" << std::endl; }
