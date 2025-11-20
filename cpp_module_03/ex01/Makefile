@@ -1,6 +1,6 @@
-Name= ScavTrav
+Name= ScavTrap
 
-src= main.cpp ClapTrap.cpp ScavTrav.cpp
+src= main.cpp ClapTrap.cpp ScavTrap.cpp
 
 CC= c++
 CFLAGS= -Wall -Wextra -Werror -std=c++98

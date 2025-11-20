@@ -76,7 +76,7 @@ void ClapTrap::beRepaired(unsigned int amount)
     {
         setEnergyPoints(getEnergyPoints() - 1);
         setHitPoints(getHitPoints() + amount);
-        std::cout << "ClapTrap " << getName() << " regain " << amount << " of points\n";
+        std::cout << "ClapTrap " << getName() << " regain " << amount << " of HitPoints\n";
     }
 }
 
