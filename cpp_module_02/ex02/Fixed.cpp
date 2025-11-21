@@ -6,7 +6,7 @@
 /*   By: hmouis <hmouis@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/07 16:21:58 by hmouis            #+#    #+#             */
-/*   Updated: 2025/11/14 19:06:12 by hmouis           ###   ########.fr       */
+/*   Updated: 2025/11/21 15:08:21 by hmouis           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,8 @@ Fixed::Fixed(const Fixed& obj)
 
 Fixed& Fixed::operator=(const Fixed& other)
 {
-    this->FixedPointNumber = other.FixedPointNumber;
+    if (this != &other)
+        this->FixedPointNumber = other.FixedPointNumber;
     return *this;
 }
 
