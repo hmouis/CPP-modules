@@ -6,7 +6,7 @@
 /*   By: hmouis <hmouis@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/06 11:23:47 by hmouis            #+#    #+#             */
-/*   Updated: 2025/10/08 12:28:05 by hmouis           ###   ########.fr       */
+/*   Updated: 2025/11/21 14:45:53 by hmouis           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,22 +20,22 @@ int parse(int ac, char **av, Sed &sed)
         return (1);
     }
     sed.inFile.open(av[1]);
-    if (!sed.inFile)
+    if (!sed.inFile.is_open())
     {
-        std::cout << "Failed to open the file " << av[1] << "\n" ;
+        std::cout << "Failed to open the in file " << av[1] << "\n" ;
         return (1);
     }
-    if (av[2] == "" || av[3] == "")
+    if (!av[2][0] && !av[3][0])
     {
         std::cout << "String is empty\n";
         return (1);   
     }
     std::string file = av[1];
     file += ".replace";
-    sed.outFile.open(file, std::ios::out | std::ios::trunc);
-    if (!sed.outFile)
+    sed.outFile.open(file.c_str(), std::ios::out | std::ios::trunc);
+    if (!sed.outFile.is_open())
     {
-        std::cout << "Failed to write to a file\n";
+        std::cout << "Failed to open the out file\n";
         return (1);
     }
     sed.S1 = av[2];
@@ -67,7 +67,7 @@ int FillNewFile(Sed &sed, char **av)
     std::string tmp;
 
     std::ifstream TmpFile(av[1]);
-    if (!sed.inFile)
+    if (!sed.inFile.is_open())
     {
         std::cout << "Failed to open the file " << av[1] << "\n" ;
         return (1);
