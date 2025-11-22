@@ -6,7 +6,7 @@
 /*   By: hmouis <hmouis@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/30 12:06:23 by hmouis            #+#    #+#             */
-/*   Updated: 2025/10/18 14:16:11 by hmouis           ###   ########.fr       */
+/*   Updated: 2025/11/22 14:10:24 by hmouis           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,9 +42,6 @@ public:
     std::string getSecret();
     std::string getPhoneNumber();
     bool getInfo();
-
-    void Add(Contact &contact);
-
 };
 
 #endif
