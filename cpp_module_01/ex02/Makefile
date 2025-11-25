@@ -1,6 +1,6 @@
 Name= Brain
 
-CC= g++
+CC= c++
 CFLAGS= -Wall -Wextra -Werror -std=c++98
 src= main.cpp
 

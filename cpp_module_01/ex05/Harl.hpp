@@ -6,7 +6,7 @@
 /*   By: hmouis <hmouis@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/10 15:37:29 by hmouis            #+#    #+#             */
-/*   Updated: 2025/11/01 15:16:33 by hmouis           ###   ########.fr       */
+/*   Updated: 2025/11/25 21:06:22 by hmouis           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,8 @@ class Harl
         void warning( void );
         void error( void );
     
-    public:    
+    public:
+        int a;
         void complain( std::string level );
 };
 

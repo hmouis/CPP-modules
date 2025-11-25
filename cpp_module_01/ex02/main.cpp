@@ -6,7 +6,7 @@
 /*   By: hmouis <hmouis@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/03 12:05:32 by hmouis            #+#    #+#             */
-/*   Updated: 2025/10/03 12:19:34 by hmouis           ###   ########.fr       */
+/*   Updated: 2025/11/25 21:18:51 by hmouis           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,4 +28,5 @@ int main()
     std::cout << "The value of the string variable: " << str << "\n";
     std::cout << "The value pointed to by stringPTR: " << *ptr << "\n";
     std::cout << "The value pointed to by stringREF: " << ref << "\n";
+    
 }
